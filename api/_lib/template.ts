@@ -128,7 +128,7 @@ function getCss(theme: string, fontSize: string) {
     }`;
 }
 
-export function getHtml(parsedReq: ParsedRequest) {
+export async function getHtml(parsedReq: ParsedRequest) {
     const { text, theme, md, fontSize, images, widths, heights } = parsedReq;
     return `<!DOCTYPE html>
 <html>
@@ -148,7 +148,7 @@ export function getHtml(parsedReq: ParsedRequest) {
             </div>
             <div class="spacer">
             <div class="heading">${emojify(
-                md ? marked(text) : sanitizeHtml(text)
+                md ? await marked(text) : sanitizeHtml(text)
             )}
             </div>
         </div>
